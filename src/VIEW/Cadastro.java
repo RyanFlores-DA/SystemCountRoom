@@ -14,7 +14,7 @@ public class Cadastro extends javax.swing.JFrame {
         lb_msgEmail.setVisible(false);
         lb_msgSenha.setVisible(false);
         setResizable(false);
-        // setExtendedState(MAXIMIZED_BOTH); INICIAR EM TELA CHEIA
+        // setExtendedState(MAXIMIZED_BOTH); INICIAR EM TELA CHEIA, MAS CREIO QUE NÃO VAI SER UTIL
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/img/icon.png")).getImage());
     }
     

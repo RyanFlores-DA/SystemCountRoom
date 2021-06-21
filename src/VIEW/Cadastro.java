@@ -211,9 +211,6 @@ public class Cadastro extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btn_cadastroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         
         /* Set the Nimbus look and feel */

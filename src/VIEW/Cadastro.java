@@ -194,11 +194,12 @@ public class Cadastro extends javax.swing.JFrame {
        usdto.setEmail(email);
        usdto.setSenha(senha);
        
+       //VERIFICAÇÃO DE CAMPO VAZIO
        if(txt_nome.getText().isEmpty() && txt_email.getText().isEmpty() && String.valueOf(txt_senha.getPassword()).isEmpty()){
            lb_msgNome.setVisible(true);
            lb_msgEmail.setVisible(true);
            lb_msgSenha.setVisible(true);
-       }else{
+       }else{ // SE CAMPO NÃO FOR VAZIO, O CADASTRO É REALIZADO
            UsuarioDAO usdao = new UsuarioDAO();
            usdao.cadastroUsuario(usdto);
        }

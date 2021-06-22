@@ -1,0 +1,5 @@
+{
+    "user":"root",
+    "pass":"123",
+    "dbUrl":"jdbc:mysql://localhost/contagem"
+}

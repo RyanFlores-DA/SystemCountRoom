@@ -2,18 +2,24 @@
 package DAO;
 
 import DTO.UsuarioDTO;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.json.simple.parser.ParseException;
 
 public class UsuarioDAO {
     Connection con;
     PreparedStatement pst;  
     public void cadastroUsuario(UsuarioDTO usdt) throws ClassNotFoundException{
-        String sql = "INSERT INTO usuario (nome, email, senha) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, email, senha) VALUES(?, ?, ?)"; // QUERY SQL DE INSERÇÃO DE DADOS
         
-        con = new ConexaoDAO().conectaBD();
-        
+        try {
+            con = new ConexaoDAO().conectaBD();
+        } catch (IOException | ParseException ex) {
+            //VOID
+        }
         try{
             pst = con.prepareStatement(sql);
             pst.setString(1,usdt.getNome());
@@ -22,7 +28,7 @@ public class UsuarioDAO {
             
             pst.execute();
             pst.close();
-        }catch(Exception e){
+        }catch(SQLException e){
             JOptionPane.showMessageDialog(null,"FuncionarioDAO"+ e);
         }
 }

@@ -1,12 +1,9 @@
-
 package VIEW;
 
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
-import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 
 public class Cadastro extends javax.swing.JFrame {
@@ -195,8 +192,12 @@ public class Cadastro extends javax.swing.JFrame {
        UsuarioDTO usdto = new UsuarioDTO();
        usdto.setNome(nome);
        usdto.setEmail(email);
-       usdto.setSenha(senha);
-       
+       //TRY AND CATCH PARA CRIPTOGRAFIA DO CAMPOO SENHA
+        try {
+            usdto.setSenha(senha);
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            //VOID
+        }
        //VERIFICAÇÃO DE CAMPO VAZIO
        if(txt_nome.getText().isEmpty() && txt_email.getText().isEmpty() && String.valueOf(txt_senha.getPassword()).isEmpty()){
            lb_msgNome.setVisible(true);

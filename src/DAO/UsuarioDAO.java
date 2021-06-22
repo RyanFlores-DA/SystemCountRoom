@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class UsuarioDAO {
     Connection con;
     PreparedStatement pst;  
-    public void cadastroUsuario(UsuarioDTO usdt){
+    public void cadastroUsuario(UsuarioDTO usdt) throws ClassNotFoundException{
         String sql = "INSERT INTO usuario (nome, email, senha) VALUES(?, ?, ?)";
         
         con = new ConexaoDAO().conectaBD();
@@ -26,4 +26,5 @@ public class UsuarioDAO {
             JOptionPane.showMessageDialog(null,"FuncionarioDAO"+ e);
         }
 }
+
 }

@@ -4,7 +4,10 @@ package VIEW;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Cadastro extends javax.swing.JFrame {
 
@@ -201,7 +204,11 @@ public class Cadastro extends javax.swing.JFrame {
            lb_msgSenha.setVisible(true);
        }else{ // SE CAMPO NÃO FOR VAZIO, O CADASTRO É REALIZADO
            UsuarioDAO usdao = new UsuarioDAO();
-           usdao.cadastroUsuario(usdto);
+           try {
+               usdao.cadastroUsuario(usdto);
+           } catch (ClassNotFoundException ex) {
+               JOptionPane.showMessageDialog(null, "Algo deu errado!");
+           }
        }
        
        

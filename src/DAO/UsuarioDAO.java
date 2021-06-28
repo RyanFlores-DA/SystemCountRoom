@@ -29,7 +29,7 @@ public class UsuarioDAO {
             pst.execute();
             pst.close();
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"FuncionarioDAO"+ e);
+            JOptionPane.showMessageDialog(null,"UsuárioDAO"+ e);
         }
 }
 

@@ -1,6 +1,7 @@
 package VIEW;
 
 import DAO.UsuarioDAO;
+import DTO.ApiDTO;
 import DTO.UsuarioDTO;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +17,10 @@ public class Cadastro extends javax.swing.JFrame {
         setResizable(false);
         // setExtendedState(MAXIMIZED_BOTH); INICIAR EM TELA CHEIA, MAS CREIO QUE NÃO VAI SER UTIL
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/img/icon.png")).getImage());
+        
+        ApiDTO api = new ApiDTO();
+        api.apiResult();
+        txt_temp.setText("Temperatura atual: " + api.getTemperatura());
     }
     
 
@@ -36,6 +41,7 @@ public class Cadastro extends javax.swing.JFrame {
         lb_msgNome = new javax.swing.JLabel();
         lb_msgEmail = new javax.swing.JLabel();
         lb_msgSenha = new javax.swing.JLabel();
+        txt_temp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro");
@@ -116,6 +122,10 @@ public class Cadastro extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(284, 284, 284))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -131,12 +141,11 @@ public class Cadastro extends javax.swing.JFrame {
                             .addComponent(lb_msgEmail)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(288, 288, 288)
-                        .addComponent(btn_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(138, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(284, 284, 284))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +175,8 @@ public class Cadastro extends javax.swing.JFrame {
                         .addComponent(lb_msgSenha)))
                 .addGap(18, 18, 18)
                 .addComponent(btn_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(txt_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -266,5 +276,6 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_nome;
     private javax.swing.JPasswordField txt_senha;
+    private javax.swing.JLabel txt_temp;
     // End of variables declaration//GEN-END:variables
 }

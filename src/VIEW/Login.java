@@ -1,16 +1,30 @@
 package VIEW;
 
+import DAO.ConexaoDAO;
 import DAO.UsuarioDAO;
 import DTO.ApiDTO;
 import DTO.UsuarioDTO;
+import java.sql.ResultSet;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.simple.parser.ParseException;
 
 public class Login extends javax.swing.JFrame {
-
+    ConexaoDAO con = new ConexaoDAO();
     public Login() {
         initComponents();
+        
+        try {
+            con.conectaBD();
+        } catch (ClassNotFoundException | IOException | ParseException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         lb_msgEmail.setVisible(false);
         lb_msgSenha.setVisible(false);
         txt_temp.setVisible(false);
@@ -159,36 +173,54 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroActionPerformed
-        String vemail, vsenha;
-        vsenha = String.valueOf(txt_senha.getPassword());
-        vemail = txt_email.getText();
         
-        UsuarioDTO usdto = new UsuarioDTO();
-       usdto.setEmail(vemail);
+            /*String vemail, vsenha;
+            vsenha = String.valueOf(txt_senha.getPassword());
+            vemail = txt_email.getText();
+            
+            UsuarioDTO usdto = new UsuarioDTO();
+            usdto.setEmail(vemail);
+            //TRY AND CATCH PARA CRIPTOGRAFIA DO CAMPOO SENHA
+            try {
+            usdto.setSenha(vsenha);
+            } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            //VOID
+            }
+            //VERIFICAÇÃO DE CAMPO VAZIO
+            if( txt_email.getText().isEmpty() && String.valueOf(txt_senha.getPassword()).isEmpty()){
+            lb_msgEmail.setVisible(true);
+            lb_msgSenha.setVisible(true);
+            }else{ UsuarioDAO usdao = new UsuarioDAO();
+            try {
+            usdao.cadastroUsuario(usdto);
+            JOptionPane.showMessageDialog(null, "tudo ok");
+            } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Algo deu errado!");
+            }
+            }*/
+            
+       UsuarioDAO dao = new UsuarioDAO();
+       UsuarioDTO dto = new UsuarioDTO();
+       String email, senha;
+       email = txt_email.getText();
+       senha = String.valueOf(txt_senha.getPassword());
+       dto.setEmail(email);
        //TRY AND CATCH PARA CRIPTOGRAFIA DO CAMPOO SENHA
         try {
-            usdto.setSenha(vsenha);
+            dto.setSenha(senha);
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             //VOID
-        }       
-       //VERIFICAÇÃO DE CAMPO VAZIO
-       if( txt_email.getText().isEmpty() && String.valueOf(txt_senha.getPassword()).isEmpty()){
-           lb_msgEmail.setVisible(true);
-           lb_msgSenha.setVisible(true);
-       }else{ UsuarioDAO usdao = new UsuarioDAO();
+        }    
+       if(dao.login(dto)){
            try {
-               usdao.cadastroUsuario(usdto);
-               JOptionPane.showMessageDialog(null, "tudo ok");
-           } catch (ClassNotFoundException ex) {
-               JOptionPane.showMessageDialog(null, "Algo deu errado!");
+               new testFrame().setVisible(true);
+               this.dispose();
+           } catch (IOException ex) {
+               Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
            }
+       }else{
+           JOptionPane.showMessageDialog(null, "Erro!");
        }
-       
-       
-       
-       
-       
-       
     }//GEN-LAST:event_btn_cadastroActionPerformed
 
     public static void main(String args[]) {

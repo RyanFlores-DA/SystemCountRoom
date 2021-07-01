@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.json.simple.parser.ParseException;
 
@@ -34,25 +37,30 @@ public class UsuarioDAO {
             
         }
 }
-    public void loginUsuario(UsuarioDTO usdt){
-    String sql = "SELECT * FROM usuario where email = '"+usdt.getEmail()+"' AND senha = '"+usdt.getSenha()+"';";
+    public boolean login(UsuarioDTO dto){
         
         
+        boolean check = false;
         try {
-            pst = con.prepareStatement(sql);
+            con = new ConexaoDAO().conectaBD();
+        } catch (ClassNotFoundException | IOException | ParseException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            pst = con.prepareStatement("SELECT * FROM usuario WHERE email = ? AND senha = ?");
+            pst.setString(1, dto.getEmail());
+            pst.setString(2, dto.getSenha());
             rs = pst.executeQuery();
             
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Usuario logado");
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuario não logado");
+                check = true;
             }
-            
-            pst.close();
-         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"UsuárioDAO"+ ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+        
+        
+        
+        return check;
     }
-
 }

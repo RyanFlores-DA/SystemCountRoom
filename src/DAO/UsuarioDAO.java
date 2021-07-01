@@ -5,13 +5,15 @@ import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import org.json.simple.parser.ParseException;
 
 public class UsuarioDAO {
     Connection con;
-    PreparedStatement pst;  
+    PreparedStatement pst; 
+    ResultSet rs;
     public void cadastroUsuario(UsuarioDTO usdt) throws ClassNotFoundException{
         String sql = "INSERT INTO usuario (nome, email, senha) VALUES(?, ?, ?)"; // QUERY SQL DE INSERÇÃO DE DADOS
         
@@ -29,8 +31,28 @@ public class UsuarioDAO {
             pst.execute();
             pst.close();
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"UsuárioDAO"+ e);
+            
         }
 }
+    public void loginUsuario(UsuarioDTO usdt){
+    String sql = "SELECT * FROM usuario where email = '"+usdt.getEmail()+"' AND senha = '"+usdt.getSenha()+"';";
+        
+        
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Usuario logado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario não logado");
+            }
+            
+            pst.close();
+         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"UsuárioDAO"+ ex);
+        }
+            
+    }
 
 }

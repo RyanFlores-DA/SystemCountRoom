@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        btn_cadastro = new javax.swing.JButton();
+        btn_login = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txt_email = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -61,12 +61,11 @@ public class Login extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(232, 240, 242));
 
-        btn_cadastro.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        btn_cadastro.setText("Login");
-        btn_cadastro.setActionCommand("Login");
-        btn_cadastro.addActionListener(new java.awt.event.ActionListener() {
+        btn_login.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        btn_login.setText("Login");
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastroActionPerformed(evt);
+                btn_loginActionPerformed(evt);
             }
         });
 
@@ -127,7 +126,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(lb_msgEmail)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(288, 288, 288)
-                        .addComponent(btn_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txt_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,7 +152,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addComponent(btn_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(txt_temp, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -172,7 +171,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastroActionPerformed
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         
             /*String vemail, vsenha;
             vsenha = String.valueOf(txt_senha.getPassword());
@@ -221,7 +220,7 @@ public class Login extends javax.swing.JFrame {
        }else{
            JOptionPane.showMessageDialog(null, "Erro!");
        }
-    }//GEN-LAST:event_btn_cadastroActionPerformed
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     public static void main(String args[]) {
         
@@ -247,6 +246,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -258,7 +258,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cadastro;
+    private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

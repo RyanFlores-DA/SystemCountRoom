@@ -39,10 +39,10 @@ public class ConexaoDAO {
         
         
         try{ // TRY CATCH DE CONEXAO COM BANCO DE DADOS
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(url,user,pass);
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"ConexaoDAO" +e.getMessage());
+            JOptionPane.showMessageDialog(null,"ConexaoDAO" + e.getMessage());
         }
         } catch (FileNotFoundException ex) {
             System.out.println("Erro: " + ex);

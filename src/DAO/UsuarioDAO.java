@@ -1,6 +1,7 @@
 
 package DAO;
 
+import DTO.ContagemDTO;
 import DTO.UsuarioDTO;
 import java.io.IOException;
 import java.sql.Connection;
@@ -58,9 +59,31 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
         return check;
+    }
+    
+    public void cadContagem(ContagemDTO cont) throws ClassNotFoundException{
+        String sql = "INSERT INTO contreuniao (presidente, dataReuniao, contagem, orador, congregacao) "
+                        + "VALUES(?, ?, ?,?,?)"; // QUERY SQL DE INSERÇÃO DE DADOS
+        
+        try {
+            con = new ConexaoDAO().conectaBD();
+        } catch (IOException | ParseException ex) {
+            //VOID
+        }
+        try{
+            pst = con.prepareStatement(sql);
+            pst.setString(1,cont.getPresidente());
+            pst.setString(2,cont.getDataReuniao());
+            pst.setInt(3,cont.getContagem());
+            pst.setString(4,cont.getOrador());
+            pst.setString(5,cont.getCongregacao());
+
+            
+            pst.execute();
+            pst.close();
+        }catch(SQLException e){
+            System.out.println(e);
+        }
     }
 }

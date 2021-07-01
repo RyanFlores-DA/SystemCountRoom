@@ -218,6 +218,7 @@ public class Cadastro extends javax.swing.JFrame {
            UsuarioDAO usdao = new UsuarioDAO();
            try {
                usdao.cadastroUsuario(usdto);
+               System.out.println("Usuario Registrado com sucesso");
            } catch (ClassNotFoundException ex) {
                JOptionPane.showMessageDialog(null, "Algo deu errado!");
            }

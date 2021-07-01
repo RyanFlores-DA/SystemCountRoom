@@ -8,6 +8,8 @@ package VIEW;
 import DTO.HtmlYear;
 import java.io.IOException;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jsoup.Jsoup;
@@ -27,6 +29,8 @@ public class testFrame extends javax.swing.JFrame {
     
     public testFrame() throws IOException {
         initComponents();
+        Date data = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         textos = new HtmlYear(Jsoup.connect(URL).get()).getParserText();
         add(position);
         
